@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/sparkMLlib/sparkMLlib.iml" filepath="$PROJECT_DIR$/sparkMLlib/sparkMLlib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sparkRDD/sparkRDD.iml" filepath="$PROJECT_DIR$/sparkRDD/sparkRDD.iml" />
     </modules>
   </component>
 </project>

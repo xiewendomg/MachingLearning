@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="sparkRDD:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/sparkRDD_jar</output-path>
+    <root id="archive" name="sparkRDD.jar">
+      <element id="module-output" name="sparkRDD" />
+    </root>
+  </artifact>
+</component>
