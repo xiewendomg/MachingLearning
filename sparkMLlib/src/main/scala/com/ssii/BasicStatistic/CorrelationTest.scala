@@ -1,5 +1,6 @@
 package com.ssii.BasicStatistic
 
+import org.apache.log4j.{Level, Logger}
 import org.apache.spark.ml.linalg.{Matrix, Vectors}
 import org.apache.spark.ml.stat.Correlation
 import org.apache.spark.sql.{Row, SparkSession}
@@ -8,6 +9,7 @@ import org.apache.spark.sql.{Row, SparkSession}
   * 相关性
   */
 object CorrelationTest {
+  Logger.getLogger("org").setLevel(Level.ERROR)
   val spark=SparkSession.builder().master("local").appName(s"${this.getClass.getSimpleName}")getOrCreate()
   import spark.implicits._
   def main(args: Array[String]): Unit = {

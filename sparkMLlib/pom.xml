@@ -56,6 +56,13 @@
           <version>${spark.version}</version>
           <!-- <scope>provided</scope>-->
       </dependency>
+    <!--其它-->
+    <dependency>
+      <groupId>org.apache.flume</groupId>
+      <artifactId>flume-ng-core</artifactId>
+      <version>1.6.0</version>
+    </dependency>
+    <!--Test-->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
