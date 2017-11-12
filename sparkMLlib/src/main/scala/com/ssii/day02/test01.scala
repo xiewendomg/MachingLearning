@@ -1,5 +1,7 @@
 package com.ssii.day02
 
+import breeze.linalg.{DenseMatrix, DenseVector, diag}
+
 /**
   * Created by xiewendomg on 2017/11/12.
   */
