@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="sparkMLlib" />
         <module name="sparkRDD" />
+        <module name="test" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -16,6 +17,7 @@
       <module name="spark4" target="1.8" />
       <module name="sparkMLlib" target="1.5" />
       <module name="sparkRDD" target="1.5" />
+      <module name="test" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

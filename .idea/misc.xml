@@ -8,6 +8,7 @@
         <option value="$PROJECT_DIR$/spark4/pom.xml" />
         <option value="$PROJECT_DIR$/sparkMLlib/pom.xml" />
         <option value="$PROJECT_DIR$/sparkRDD/pom.xml" />
+        <option value="$PROJECT_DIR$/test/pom.xml" />
       </list>
     </option>
   </component>
