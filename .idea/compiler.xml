@@ -15,9 +15,9 @@
       <module name="spark1" target="1.8" />
       <module name="spark2" target="1.8" />
       <module name="spark4" target="1.8" />
-      <module name="sparkMLlib" target="1.7" />
-      <module name="sparkRDD" target="1.7" />
-      <module name="test" target="1.7" />
+      <module name="sparkMLlib" target="1.8" />
+      <module name="sparkRDD" target="1.8" />
+      <module name="test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
