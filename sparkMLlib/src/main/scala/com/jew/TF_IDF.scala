@@ -22,5 +22,6 @@ object TF_IDF {
     val tokenizer = new Tokenizer().setInputCol("sentence").setOutputCol("words")
     val wordsData = tokenizer.transform(sentenceData)
     wordsData.show(false)
+    
   }
 }
