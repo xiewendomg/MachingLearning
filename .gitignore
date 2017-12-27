@@ -49,4 +49,3 @@ crashlytics-build.properties
 fabric.properties
 .idea/
 spark-warehouse/
-out/
