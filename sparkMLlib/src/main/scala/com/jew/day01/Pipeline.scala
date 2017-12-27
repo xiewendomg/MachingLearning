@@ -1,11 +1,11 @@
-package com.jew
+package com.jew.day01
 
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.ml.Pipeline
 import org.apache.spark.ml.classification.LogisticRegression
 import org.apache.spark.ml.feature.{HashingTF, Tokenizer}
-import org.apache.spark.sql.{Row, SparkSession}
 import org.apache.spark.ml.linalg.Vector
+import org.apache.spark.sql.{Row, SparkSession}
 
 /**
   * Created by Administrator on 2017/12/27.
@@ -16,7 +16,6 @@ object Pipeline {
     Logger.getLogger("org").setLevel(Level.ERROR)
     val spark = SparkSession.builder().master("local[1]").appName("my App Name").getOrCreate()
     //开启RDD的隐式转换,构建DataFram
-    import spark.implicits._
     //构建训练数据集
     val training = spark.createDataFrame(Seq(
       (0L, "a b c d e spark", 1.0),
