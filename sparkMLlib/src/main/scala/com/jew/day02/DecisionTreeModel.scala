@@ -2,9 +2,11 @@ package com.jew.day02
 
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.ml.Pipeline
-import org.apache.spark.ml.classification.DecisionTreeClassifier
+import org.apache.spark.ml.classification.{DecisionTreeClassificationModel, DecisionTreeClassifier}
+import org.apache.spark.ml.evaluation.{MulticlassClassificationEvaluator, RegressionEvaluator}
 import org.apache.spark.ml.feature.{IndexToString, StringIndexer, VectorIndexer}
 import org.apache.spark.ml.linalg.Vectors
+import org.apache.spark.ml.regression.{DecisionTreeRegressionModel, DecisionTreeRegressor}
 import org.apache.spark.sql.SparkSession
 
 /**
@@ -45,6 +47,36 @@ object DecisionTreeModel {
     //进行预测
     val predictionsClassifier = modelClassifier.transform(testData)
     predictionsClassifier.select("predictedLabel", "label", "features").show(20)
+
+    //评估决策树分类模型
+    val evaluatorClassifier = new MulticlassClassificationEvaluator().
+      setLabelCol("indexedLabel").setPredictionCol("prediction").setMetricName("accuracy")
+    val accuracy = evaluatorClassifier.evaluate(predictionsClassifier)
+    println("Test Error = " + (1.0 - accuracy))
+    val treeModelClassifier = modelClassifier.stages(2).asInstanceOf[DecisionTreeClassificationModel]
+    //模型的预测准确率为 0.8648648648648649以及训练的决策树模型结构。
+    println("Learned classification tree model:\n" + treeModelClassifier.toDebugString)
+    // 构建决策树回归模型
+    //训练决策树模型
+     val dtRegressor = new DecisionTreeRegressor().setLabelCol("indexedLabel")
+      .setFeaturesCol("indexedFeatures")
+    //在pipeline中进行设置
+     val pipelineRegressor = new Pipeline().setStages(Array(labelIndexer, featureIndexer, dtRegressor, labelConverter))
+    //训练决策树模型
+    val modelRegressor = pipelineRegressor.fit(trainingData)
+    //进行预测
+    val predictionsRegressor = modelRegressor.transform(testData)
+    //查看部分预测结果
+    predictionsRegressor.select("predictedLabel", "label", "features").show(20)
+
+   //评估决策树回归模型
+   val evaluatorRegressor = new RegressionEvaluator().setLabelCol("indexedLabel").
+     setPredictionCol("prediction").setMetricName("rmse")
+    val rmse = evaluatorRegressor.evaluate(predictionsRegressor)
+    println("Root Mean Squared Error (RMSE) on test data = " + rmse)
+    val treeModelRegressor = modelRegressor.stages(2).asInstanceOf[DecisionTreeRegressionModel]
+    println("Learned regression tree model:\n" + treeModelRegressor.toDebugString)
+
   }
 
 }
