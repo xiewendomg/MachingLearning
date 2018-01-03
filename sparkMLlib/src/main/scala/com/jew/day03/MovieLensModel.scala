@@ -50,6 +50,6 @@ def main(args: Array[String]): Unit = {
   //使用训练好的推荐模型对测试集中的用户商品进行预测评分，得到预测评分的数据集
   val predictionsExplicit = modelExplicit.transform(test)
   val predictionsImplicit = modelImplicit.transform(test)
-  predictionsExplicit.show()
+  9702.show()
  }
 }
