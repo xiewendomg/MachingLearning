@@ -97,7 +97,6 @@ object HypothesisTest {
     val u =normalRDD(sc,10000000L, 10)
     val v = u.map(x => 1.0 + 2.0 * x)
     v.take(10).foreach(println)
-
   }
   /**
     * 核密度计算 Kerbel density estimation
@@ -111,6 +110,6 @@ object HypothesisTest {
   }
 
   def main(args: Array[String]): Unit = {
-    kde()
+    before()
   }
 }

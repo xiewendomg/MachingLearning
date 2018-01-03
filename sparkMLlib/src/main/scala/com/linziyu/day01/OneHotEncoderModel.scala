@@ -1,4 +1,4 @@
-package com.jew.day01
+package com.linziyu.day01
 
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.ml.feature.{OneHotEncoder, StringIndexer}

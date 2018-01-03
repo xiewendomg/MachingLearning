@@ -1,4 +1,4 @@
-package com.jew.day03
+package com.linziyu.day03
 
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.ml.recommendation.ALS
@@ -50,6 +50,6 @@ def main(args: Array[String]): Unit = {
   //使用训练好的推荐模型对测试集中的用户商品进行预测评分，得到预测评分的数据集
   val predictionsExplicit = modelExplicit.transform(test)
   val predictionsImplicit = modelImplicit.transform(test)
-  9702.show()
+  predictionsExplicit.show()
  }
 }
