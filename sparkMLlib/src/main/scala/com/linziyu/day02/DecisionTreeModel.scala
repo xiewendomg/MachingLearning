@@ -1,4 +1,4 @@
-package com.jew.day02
+package com.linziyu.day02
 
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.ml.Pipeline

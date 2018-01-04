@@ -9,19 +9,23 @@ import org.apache.spark.sql.{Row, SparkSession}
   * 相关性
   */
 object CorrelationTest {
-  Logger.getLogger("org").setLevel(Level.ERROR)
-  val spark=SparkSession.builder().master("local").appName(s"${this.getClass.getSimpleName}")getOrCreate()
-  import spark.implicits._
+
   def main(args: Array[String]): Unit = {
+    Logger.getLogger("org").setLevel(Level.ERROR)
+    val spark=SparkSession.builder().master("local").appName(s"${this.getClass.getSimpleName}")getOrCreate()
+    import spark.implicits._
+    System.setProperty("hadoop.home.dir", "D:\\hadoop-2.7.3")
     val data = Seq(
-      Vectors.sparse(4, Seq((0, 1.0), (3, -2.0))),
+      //稀疏向量和稠密向量可以装换
+//      Vectors.sparse(4, Seq((0, 1.0), (3, -2.0))),
+      Vectors.dense(1.0, 0.0, 0.0, -2.0),
       Vectors.dense(4.0, 5.0, 0.0, 3.0),
       Vectors.dense(6.0, 7.0, 0.0, 8.0),
       Vectors.sparse(4, Seq((0, 9.0), (3, 1.0)))
     )
 
     val df = data.map(Tuple1.apply).toDF("features")
-    println(df)
+   df.show()
     val Row(coeff1: Matrix) = {
       Correlation.corr(df, "features").head
     }

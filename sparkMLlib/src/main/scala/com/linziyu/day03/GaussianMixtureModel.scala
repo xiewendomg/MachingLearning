@@ -1,4 +1,4 @@
-package com.jew.day03
+package com.linziyu.day03
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.ml.clustering.GaussianMixture
 import org.apache.spark.ml.linalg.{Vector, Vectors}
