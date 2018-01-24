@@ -1,6 +1,7 @@
 package com.linziyu.day03
 
 import org.apache.log4j.{Level, Logger}
+import org.apache.spark.ml.evaluation.RegressionEvaluator
 import org.apache.spark.ml.recommendation.ALS
 import org.apache.spark.sql.SparkSession
 
@@ -51,5 +52,14 @@ def main(args: Array[String]): Unit = {
   val predictionsExplicit = modelExplicit.transform(test)
   val predictionsImplicit = modelImplicit.transform(test)
   predictionsExplicit.show()
+  predictionsImplicit.show()
+  //计算模型的均方根误差来对模型进行评估，均方根误差越小，模型越准确：
+  val evaluator = new RegressionEvaluator().setMetricName("rmse").
+    setLabelCol("rating"). setPredictionCol("prediction")
+  val rmseExplicit = evaluator.evaluate(predictionsExplicit)
+  val rmseImplicit = evaluator.evaluate(predictionsImplicit)
+  //可以看到打分的均方差值为1.69和1.80左右。由于本例的数据量很少，预测的结果和实际相比有一定的差距。
+  println(s"Explicit:Root-mean-square error = $rmseExplicit")
+  println(s"Implicit:Root-mean-square error = $rmseImplicit")
  }
 }
