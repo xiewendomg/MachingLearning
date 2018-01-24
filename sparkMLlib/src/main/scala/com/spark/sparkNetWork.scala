@@ -1,10 +1,8 @@
 package com.spark
 
-import org.apache.hadoop.mapred.Master
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.ml.classification.LogisticRegression
-import org.apache.spark.ml.linalg.Vectors
-import org.apache.spark.ml.linalg.Vector
+import org.apache.spark.ml.linalg.{Vector, Vectors}
 import org.apache.spark.ml.param.ParamMap
 import org.apache.spark.sql.{Row, SparkSession}
 
@@ -17,7 +15,6 @@ object sparkNetWork {
     Logger.getLogger("org").setLevel(Level.ERROR)
     System.setProperty("hadoop.home.dir", "D:\\hadoop-2.7.3")
     val spark = SparkSession.builder().master("local[1]").appName("my App Name").getOrCreate()
-    import spark.implicits._
     // Prepare training data from a list of (label, features) tuples.
     val training = spark.createDataFrame(Seq(
       (1.0, Vectors.dense(0.0, 1.1, 0.1)),
