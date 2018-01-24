@@ -1,5 +1,6 @@
 package com.spark
 
+import org.apache.hadoop.mapred.Master
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.ml.classification.LogisticRegression
 import org.apache.spark.ml.linalg.Vectors
@@ -11,6 +12,7 @@ import org.apache.spark.sql.{Row, SparkSession}
   * Created by Administrator on 2018/1/3.
   */
 object sparkNetWork {
+
   def main(args: Array[String]): Unit = {
     Logger.getLogger("org").setLevel(Level.ERROR)
     System.setProperty("hadoop.home.dir", "D:\\hadoop-2.7.3")
