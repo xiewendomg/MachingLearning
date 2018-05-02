@@ -1,6 +1,5 @@
 package com.jew.day03
 
-import com.jew.day02.DecisionTreeModel.Iris
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.ml.{Pipeline, PipelineModel}
 import org.apache.spark.ml.classification.{LogisticRegression, LogisticRegressionModel}
